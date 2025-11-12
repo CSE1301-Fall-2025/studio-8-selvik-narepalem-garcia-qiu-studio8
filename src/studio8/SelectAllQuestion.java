@@ -13,7 +13,7 @@ public class SelectAllQuestion extends MultipleChoiceQuestion {
 	 */
 	public SelectAllQuestion(String prompt, String answer, String[] choices) {
 		// Hint: 1 point per choice
-		throw new NotYetImplementedException();
+		super(prompt, answer, answer.length(), choices);
 	}
 	
 	/**
@@ -21,7 +21,8 @@ public class SelectAllQuestion extends MultipleChoiceQuestion {
 	 * @param String givenAnswer to check for points
 	 */
 	public int checkAnswer(String givenAnswer) {
-		throw new NotYetImplementedException();
+		int score = getPoints() - findMissingCorrectAnswers(givenAnswer) - findIncorrectGivenAnswers(givenAnswer);
+		return score;
 	}
 
 	/**
@@ -67,6 +68,6 @@ public class SelectAllQuestion extends MultipleChoiceQuestion {
 	}	
 	
 	public static void main(String[] args) {	
-		
+	SelectAllQuestion animal = new SelectAllQuestion("Which of these are mammals","ABD", new String [] {"Giraffe", "Penguin", "Toad", "Monkey"});
 	}
 }
